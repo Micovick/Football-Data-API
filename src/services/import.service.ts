@@ -46,18 +46,16 @@ export class ImportService {
         `;
         
         // Insert Coach
-        if (team.coach?.name) {
-          await prisma.coach.upsert({
-            where: { teamId: savedTeam.id },
-            update: {},
-            create: {
-              name: team.coach.name,
-              nationality: team.coach.nationality,
-              dateOfBirth: new Date(team.coach.dateOfBirth).toISOString(),
-              teamId: savedTeam.id,
-            },
-          });
-        }
+        await prisma.coach.upsert({
+          where: { teamId: savedTeam.id },
+          update: {},
+          create: {
+            name: team.coach.name,
+            nationality: team.coach.nationality,
+            dateOfBirth: new Date(team.coach.dateOfBirth).toISOString(),
+            teamId: savedTeam.id,
+          },
+        });
         
         // Insert Players
         for (const player of team.squad) {
