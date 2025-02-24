@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export const playerResolvers = {
   Query: {
-    players: async (_: unknown, { competitionCode, teamName }: { competitionCode: string, teamName: string}) => {
+    players: async (_: unknown, { competitionCode, teamName }: { competitionCode: string, teamName?: string}) => {
       const competition = await prisma.competition.findUnique({
         where: { code: competitionCode },
         include: {
