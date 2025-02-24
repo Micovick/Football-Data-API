@@ -5,6 +5,16 @@
   "repository": "https://github.com/Micovick/Football-Data-API.git",
   "author": "Euclides Cardoso Júnior <euclides.c.jr@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/app.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:generate": "prisma generate"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  },
   "dependencies": {
     "@prisma/client": "^6.4.1",
     "apollo-server": "^3.13.0",
