@@ -6,6 +6,7 @@ export const teamTypeDefs = gql`
     name: String!
     tla: String!
     shortName: String!
+    areaName: String!
     address: String
     website: String
     founded: Int

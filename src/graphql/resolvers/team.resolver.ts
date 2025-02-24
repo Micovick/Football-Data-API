@@ -7,7 +7,14 @@ export const teamResolvers = {
     teams: async (_: unknown, { competitionCode }: { competitionCode: string }) => {
       const competition = await prisma.competition.findUnique({
         where: { code: competitionCode },
-        include: { teams: true },
+        include: {
+          teams: {
+            include: {
+              squad: true,
+              coach: true,
+            },
+          },
+        },
       });
       if (!competition) throw new Error("Competition not found");
       return competition.teams;
