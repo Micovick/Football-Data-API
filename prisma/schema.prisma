@@ -14,45 +14,47 @@ datasource db {
 }
 
 model Competition {
-  id       Int    @id @default(autoincrement())
-  name     String
-  code     String @unique
-  type     String
-  emblem   String?
-  teams    Team[] @relation("CompetitionTeams")
+  id     Int     @id @default(autoincrement())
+  name   String
+  code   String  @unique
+  areaName String
+  type   String
+  emblem String?
+  teams  Team[]  @relation("CompetitionTeams")
 }
 
 model Team {
-  id       Int    @id @default(autoincrement())
-  name     String
-  tla      String @unique
-  shortName String
-  address  String
-  website   String?
-  founded   Int?
-  clubColors String?
-  venue     String
+  id           Int           @id @default(autoincrement())
+  name         String
+  tla          String        @unique
+  shortName    String
+  areaName     String
+  address      String
+  website      String?
+  founded      Int?
+  clubColors   String?
+  venue        String
   competitions Competition[] @relation("CompetitionTeams")
-  coach     Coach?
-  squad    Player[]
+  coach        Coach?
+  squad        Player[]
 }
 
 model Player {
-  id         Int    @id @default(autoincrement())
-  name       String
-  position   String
+  id          Int      @id @default(autoincrement())
+  name        String
+  position    String
   dateOfBirth DateTime
   nationality String
   shirtNumber Int?
-  teamId     Int
-  team       Team   @relation(fields: [teamId], references: [id])
+  teamId      Int
+  team        Team     @relation(fields: [teamId], references: [id])
 }
 
 model Coach {
-  id         Int    @id @default(autoincrement())
-  name       String
+  id          Int      @id @default(autoincrement())
+  name        String
   dateOfBirth DateTime
   nationality String
-  teamId     Int   @unique
-  team       Team  @relation(fields: [teamId], references: [id])
+  teamId      Int      @unique
+  team        Team     @relation(fields: [teamId], references: [id])
 }
