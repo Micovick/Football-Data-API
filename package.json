@@ -6,7 +6,7 @@
   "author": "Euclides Cardoso Júnior <euclides.c.jr@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "prisma:migrate": "prisma migrate dev --name init",
